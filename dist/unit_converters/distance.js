@@ -2,27 +2,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toNanometer = exports.toMicrometer = exports.toMillimeter = exports.toCentimeter = exports.toDecimeter = exports.toDecameter = exports.toHectometer = exports.toKilometer = exports.toMeter = void 0;
+const console_1 = require("console");
 const toMeter = (currentUnit, value) => {
-    switch (currentUnit) {
-        case 'km':
-            return value * 1000;
-        case 'hm':
-            return value * 100;
-        case 'dam':
-            return value * 10;
-        case 'dm':
-            return value / 10;
-        case 'cm':
-            return value / 100;
-        case 'mm':
-            return value / 100;
-        case 'um':
-            return value / 1000000;
-        case 'nm':
-            return value / 1000000000;
-        default:
-            return value;
+    const toMeterFormulas = new Map([
+        ['km', value * 1000],
+        ['hm', value * 100],
+        ['dam', value * 10],
+        ['m', value],
+        ['dm', value / 10],
+        ['cm', value / 100],
+        ['mm', value / 1000],
+        ['um', value / 1000000],
+        ['nm', value / 1000000000]
+    ]);
+    if (!toMeterFormulas.has(currentUnit)) {
+        throw (0, console_1.error)(`${currentUnit} is not a valid unit`);
     }
+    return toMeterFormulas.get(currentUnit);
 };
 exports.toMeter = toMeter;
 const toKilometer = (currentUnit, value) => {

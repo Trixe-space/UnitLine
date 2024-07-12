@@ -9,11 +9,7 @@ let currentUnit : string = input[3].split('-')[0]
 let convertedUnit : string = input[3].split('-')[1]
 let value : number = parseFloat(input[4])
 
-// console.log(unitType, currentUnit, convertedUnit, value)
-
 type distanceUnits = 'km' | 'hm' | 'dam' | 'm' | 'dm' | 'cm' | 'mm' | 'um' | 'nm'
-const distanceUnitList : distanceUnits[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
-
 let distanceConverter : Map<distanceUnits, number> = new Map([
     ['km', distanceConverters.toKilometer(currentUnit, value)],
     ['hm', distanceConverters.toHectometer(currentUnit, value)],
@@ -29,9 +25,13 @@ let distanceConverter : Map<distanceUnits, number> = new Map([
 
 switch (unitType) {
     case 'distance':
+    case 'd':
         if (distanceConverter.has(convertedUnit as distanceUnits)) {
             console.log(`${value + currentUnit} -> ${distanceConverter.get(convertedUnit as distanceUnits) + convertedUnit}`)
         } else {
-            error('Not a valid unit')
+            throw error(`${convertedUnit} is not a valid unit`)
         }
+        break
+    default:
+        throw error(`${unitType} is not a valid type`)
 }

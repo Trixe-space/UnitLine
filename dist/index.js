@@ -31,7 +31,6 @@ let unitType = input[2].slice(1);
 let currentUnit = input[3].split('-')[0];
 let convertedUnit = input[3].split('-')[1];
 let value = parseFloat(input[4]);
-const distanceUnitList = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
 let distanceConverter = new Map([
     ['km', distanceConverters.toKilometer(currentUnit, value)],
     ['hm', distanceConverters.toHectometer(currentUnit, value)],
@@ -45,10 +44,14 @@ let distanceConverter = new Map([
 ]);
 switch (unitType) {
     case 'distance':
+    case 'd':
         if (distanceConverter.has(convertedUnit)) {
             console.log(`${value + currentUnit} -> ${distanceConverter.get(convertedUnit) + convertedUnit}`);
         }
         else {
-            (0, console_1.error)('Not a valid unit');
+            throw (0, console_1.error)(`${convertedUnit} is not a valid unit`);
         }
+        break;
+    default:
+        throw (0, console_1.error)(`${unitType} is not a valid type`);
 }

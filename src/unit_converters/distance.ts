@@ -1,25 +1,24 @@
 #!usr/bin/env node
+import { error } from "console";
+
 export const toMeter = (currentUnit : string, value : number) : number => {
-    switch(currentUnit) {
-        case 'km':
-            return value * 1000
-        case 'hm':
-            return value * 100
-        case 'dam':
-            return value * 10
-        case 'dm':
-            return value / 10
-        case 'cm':
-            return value / 100
-        case 'mm':
-            return value / 100
-        case 'um':
-            return value / 1000000
-        case 'nm':
-            return value / 1000000000
-        default:
-            return value
+    type distanceUnits = 'km' | 'hm' | 'dam' | 'm' | 'dm' | 'cm' | 'mm' | 'um' | 'nm'
+    const toMeterFormulas : Map<distanceUnits, number> = new Map([
+        ['km', value * 1000],
+        ['hm', value * 100],
+        ['dam', value * 10],
+        ['m', value],
+        ['dm', value / 10],
+        ['cm', value / 100],
+        ['mm', value / 1000],
+        ['um', value / 1000000],
+        ['nm', value / 1000000000]
+    ])
+
+    if (!toMeterFormulas.has(currentUnit as distanceUnits)) {
+        throw error(`${currentUnit} is not a valid unit`)
     }
+    return toMeterFormulas.get(currentUnit as distanceUnits)!
 }
 
 export const toKilometer = (currentUnit : string, value : number) => {
