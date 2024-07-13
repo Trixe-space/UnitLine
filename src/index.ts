@@ -6,6 +6,29 @@ const input : string[] = process.argv
 
 const helpMessage = `
 unitline <command>
+
+Commands:
+    help, -help, --help     Shows help message with a list of all commands
+        Usage:
+            unitline help
+
+
+    conv, convert           Convert between two units
+        Usage:
+            unitline conv <type of units> <unit from>-<unit to> <value>
+            unitline d m-km 1560.23
+
+        Supported unit types
+            d, distance       For distance units
+
+
+    ls, list                Shows a list of all supported units
+        Usage:
+            unitline ls [--option]
+            unitline ls -distance
+
+        Options:
+            -d, --distance       Shows a list of all distance units
 `
 
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
@@ -68,7 +91,7 @@ if (input.length >= 3) {
             const argument = input[3]
             switch (argument) {
                 case '-d':
-                case '-distance':
+                case '--distance':
                     console.log(distanceUnits.toString())
                     break
                 default:
@@ -79,7 +102,7 @@ Distance: ${distanceUnits.toString()}
             break
         case 'conv':
         case 'convert':
-            if (input.length <= 3) {
+            if (input.length <= 5) {
                 console.log(`
 Not enough arguments.
 
@@ -94,7 +117,6 @@ To view supported units, run:
                     `)
             break
             }
-
             let unitType : string = input[3]
             let unitFrom : string = input[4].split('-')[0]
             let unitTo : string = input[4].split('-')[1]
