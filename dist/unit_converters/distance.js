@@ -2,6 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.toNanometer = exports.toMicrometer = exports.toMillimeter = exports.toCentimeter = exports.toDecimeter = exports.toDecameter = exports.toHectometer = exports.toKilometer = exports.toMeter = void 0;
+//TODO Rework this
 const console_1 = require("console");
 const toMeter = (currentUnit, value) => {
     const toMeterFormulas = new Map([

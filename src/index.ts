@@ -1,35 +1,8 @@
 #!/usr/bin/env node
-import { error } from 'console';
 import * as distanceConverters from './unit_converters/distance'
+import * as messages from './messages'
 
 const input : string[] = process.argv
-
-const helpMessage = `
-unitline <command>
-
-Commands:
-    help, -help, --help     Shows help message with a list of all commands
-        Usage:
-            unitline help
-
-
-    conv, convert           Convert between two units
-        Usage:
-            unitline conv <type of units> <unit from>-<unit to> <value>
-            unitline d m-km 1560.23
-
-        Supported unit types
-            d, distance       For distance units
-
-
-    ls, list                Shows a list of all supported units
-        Usage:
-            unitline ls [--option]
-            unitline ls -distance
-
-        Options:
-            -d, --distance       Shows a list of all distance units
-`
 
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
 
@@ -37,7 +10,6 @@ const output = (unitFrom: string, value : number, unitTo: string, convertedValue
     console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`)
 }
 
-//TODO Put all the messages in their own seperate file.
 const converter = (unitType : string, unitFrom : string, unitTo : string, value : number) : void => {
     let convertedValue : number
     const distanceConverter : Map<string, number> = new Map([
@@ -57,23 +29,11 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
             if (distanceConverter.has(unitTo)) {
                 output(unitFrom, value, unitTo, distanceConverter.get(unitTo)!)
             } else {
-                console.log(`
-${unitTo} is not a valid unit to convert to.
-
-List of valid units: ${distanceUnits.toString()}
-
-To check additional units, run:
-    unitline ls
-                    `)
+                messages.invalidUnitTo(unitTo, distanceUnits)
             }
             break
         default:
-            console.log(`
-${unitType} is not a valid type
-
-List of available types:
-d, distance       Convert units of distance
-                `)
+            messages.invalidUnitType(unitType)
     }
     
 }
@@ -84,7 +44,7 @@ if (input.length >= 3) {
         case 'help':
         case '--help':
         case '-help':
-            console.log(helpMessage)
+            messages.help()
             break
         case 'ls':
         case 'list':
@@ -103,18 +63,7 @@ Distance: ${distanceUnits.toString()}
         case 'conv':
         case 'convert':
             if (input.length <= 5) {
-                console.log(`
-Not enough arguments.
-
-Usage:
-unitline conv <type of units> <unit from>-<unit to> <value>
-
-Unit Types:
-d, distance       Convert units of distance
-
-To view supported units, run:
-    unitline ls
-                    `)
+                messages.notEnoughArguments()
             break
             }
             let unitType : string = input[3]
@@ -130,13 +79,8 @@ To view supported units, run:
             converter(unitType, unitFrom, unitTo, value)
             break
         default:
-            console.log(`
-${command} is not a valid UnitLine command.
-
-To see a list of all valid commands, please run the following command:
-    unitline help
-                `)
+            messages.invalidCommand(command)
     }
 } else {
-    console.log(helpMessage)
+    messages.help()
 }

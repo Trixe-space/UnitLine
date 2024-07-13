@@ -1,4 +1,5 @@
 #!usr/bin/env node
+//TODO Rework this
 import { error } from "console";
 
 export const toMeter = (currentUnit : string, value : number) : number => {
