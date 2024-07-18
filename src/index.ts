@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import * as distanceConverters from './unit_converters/distance'
+import * as distanceConverter from './unit_converters/distance'
 import * as messages from './messages'
 
 const input : string[] = process.argv
@@ -12,25 +12,11 @@ const output = (unitFrom: string, value : number, unitTo: string, convertedValue
 
 const converter = (unitType : string, unitFrom : string, unitTo : string, value : number) : void => {
     let convertedValue : number
-    const distanceConverter : Map<string, number> = new Map([
-        ['km', distanceConverters.toKilometer(unitFrom, value)],
-        ['hm', distanceConverters.toHectometer(unitFrom, value)],
-        ['dam', distanceConverters.toDecameter(unitFrom, value)],
-        ['m', distanceConverters.toMeter(unitFrom, value)],
-        ['dm', distanceConverters.toDecimeter(unitFrom, value)],
-        ['cm', distanceConverters.toCentimeter(unitFrom, value)],
-        ['mm', distanceConverters.toMillimeter(unitFrom, value)],
-        ['um', distanceConverters.toMicrometer(unitFrom, value)],
-        ['nm', distanceConverters.toNanometer(unitFrom, value)]
-    ])
     switch (unitType) {
         case 'd':
         case 'distance':
-            if (distanceConverter.has(unitTo)) {
-                output(unitFrom, value, unitTo, distanceConverter.get(unitTo)!)
-            } else {
-                messages.invalidUnitTo(unitTo, distanceUnits)
-            }
+            convertedValue = distanceConverter.convert(unitFrom, unitTo, value) as number
+            output(unitFrom, value, unitTo, convertedValue)
             break
         default:
             messages.invalidUnitType(unitType)

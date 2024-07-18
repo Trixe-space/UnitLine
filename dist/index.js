@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const distanceConverters = __importStar(require("./unit_converters/distance"));
+const distanceConverter = __importStar(require("./unit_converters/distance"));
 const messages = __importStar(require("./messages"));
 const input = process.argv;
 const distanceUnits = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
@@ -33,26 +33,11 @@ const output = (unitFrom, value, unitTo, convertedValue) => {
 };
 const converter = (unitType, unitFrom, unitTo, value) => {
     let convertedValue;
-    const distanceConverter = new Map([
-        ['km', distanceConverters.toKilometer(unitFrom, value)],
-        ['hm', distanceConverters.toHectometer(unitFrom, value)],
-        ['dam', distanceConverters.toDecameter(unitFrom, value)],
-        ['m', distanceConverters.toMeter(unitFrom, value)],
-        ['dm', distanceConverters.toDecimeter(unitFrom, value)],
-        ['cm', distanceConverters.toCentimeter(unitFrom, value)],
-        ['mm', distanceConverters.toMillimeter(unitFrom, value)],
-        ['um', distanceConverters.toMicrometer(unitFrom, value)],
-        ['nm', distanceConverters.toNanometer(unitFrom, value)]
-    ]);
     switch (unitType) {
         case 'd':
         case 'distance':
-            if (distanceConverter.has(unitTo)) {
-                output(unitFrom, value, unitTo, distanceConverter.get(unitTo));
-            }
-            else {
-                messages.invalidUnitTo(unitTo, distanceUnits);
-            }
+            convertedValue = distanceConverter.convert(unitFrom, unitTo, value);
+            output(unitFrom, value, unitTo, convertedValue);
             break;
         default:
             messages.invalidUnitType(unitType);

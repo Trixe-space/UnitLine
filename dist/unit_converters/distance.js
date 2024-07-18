@@ -1,64 +1,30 @@
 #!usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toNanometer = exports.toMicrometer = exports.toMillimeter = exports.toCentimeter = exports.toDecimeter = exports.toDecameter = exports.toHectometer = exports.toKilometer = exports.toMeter = void 0;
-//TODO Rework this
-const console_1 = require("console");
-const toMeter = (currentUnit, value) => {
-    const toMeterFormulas = new Map([
-        ['km', value * 1000],
-        ['hm', value * 100],
-        ['dam', value * 10],
-        ['m', value],
-        ['dm', value / 10],
-        ['cm', value / 100],
-        ['mm', value / 1000],
-        ['um', value / 1000000],
-        ['nm', value / 1000000000]
-    ]);
-    if (!toMeterFormulas.has(currentUnit)) {
-        throw (0, console_1.error)(`${currentUnit} is not a valid unit`);
+exports.convert = void 0;
+let formulas = {
+    'km': 1000,
+    'hm': 100,
+    'dam': 10,
+    'm': 1,
+    'dm': 0.1,
+    'cm': 0.01,
+    'mm': 0.001,
+    'um': 0.000001,
+    'nm': 0.000000001
+};
+//TODO better error messages
+const convert = (unitFrom, unitTo, value) => {
+    if (!(unitFrom in formulas)) {
+        console.log('Invalid unit to convert from');
     }
-    return toMeterFormulas.get(currentUnit);
+    else {
+        if (!(unitTo in formulas)) {
+            console.log('Invalid unit to convert to');
+        }
+        else {
+            return (value * formulas[unitFrom]) / formulas[unitTo];
+        }
+    }
 };
-exports.toMeter = toMeter;
-const toKilometer = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue / 1000;
-};
-exports.toKilometer = toKilometer;
-const toHectometer = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue / 100;
-};
-exports.toHectometer = toHectometer;
-const toDecameter = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue / 10;
-};
-exports.toDecameter = toDecameter;
-const toDecimeter = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue * 10;
-};
-exports.toDecimeter = toDecimeter;
-const toCentimeter = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue * 100;
-};
-exports.toCentimeter = toCentimeter;
-const toMillimeter = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue * 1000;
-};
-exports.toMillimeter = toMillimeter;
-const toMicrometer = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue * 1000000;
-};
-exports.toMicrometer = toMicrometer;
-const toNanometer = (currentUnit, value) => {
-    let newValue = (0, exports.toMeter)(currentUnit, value);
-    return newValue / 1000000000;
-};
-exports.toNanometer = toNanometer;
+exports.convert = convert;

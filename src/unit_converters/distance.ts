@@ -1,63 +1,30 @@
 #!usr/bin/env node
-//TODO Rework this
-import { error } from "console";
 
-export const toMeter = (currentUnit : string, value : number) : number => {
-    type distanceUnits = 'km' | 'hm' | 'dam' | 'm' | 'dm' | 'cm' | 'mm' | 'um' | 'nm'
-    const toMeterFormulas : Map<distanceUnits, number> = new Map([
-        ['km', value * 1000],
-        ['hm', value * 100],
-        ['dam', value * 10],
-        ['m', value],
-        ['dm', value / 10],
-        ['cm', value / 100],
-        ['mm', value / 1000],
-        ['um', value / 1000000],
-        ['nm', value / 1000000000]
-    ])
+interface Distance {
+    [unit: string]: number;
+}
 
-    if (!toMeterFormulas.has(currentUnit as distanceUnits)) {
-        throw error(`${currentUnit} is not a valid unit`)
+let formulas : Distance = {
+    'km': 1000,
+    'hm': 100,
+    'dam': 10,
+    'm': 1,
+    'dm': 0.1,
+    'cm': 0.01,
+    'mm': 0.001,
+    'um': 0.000001,
+    'nm': 0.000000001
+}
+
+//TODO better error messages
+export const convert = (unitFrom : string, unitTo: string, value : number) => {
+    if (!(unitFrom in formulas)) {
+        console.log('Invalid unit to convert from')
+    } else {
+        if (!(unitTo in formulas)) {
+            console.log('Invalid unit to convert to')
+        } else {
+            return (value * formulas[unitFrom]) / formulas[unitTo]
+        }
     }
-    return toMeterFormulas.get(currentUnit as distanceUnits)!
-}
-
-export const toKilometer = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue / 1000
-}
-
-export const toHectometer = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue / 100
-}
-
-export const toDecameter = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue / 10
-}
-
-export const toDecimeter = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue * 10
-}
-
-export const toCentimeter = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue * 100
-}
-
-export const toMillimeter = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue * 1000
-}
-
-export const toMicrometer = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue * 1000000
-}
-
-export const toNanometer = (currentUnit : string, value : number) => {
-    let newValue = toMeter(currentUnit, value)
-    return newValue / 1000000000
 }
