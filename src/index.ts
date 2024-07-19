@@ -16,7 +16,9 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
         case 'd':
         case 'distance':
             convertedValue = distanceConverter.convert(unitFrom, unitTo, value) as number
-            output(unitFrom, value, unitTo, convertedValue)
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue)
+            }
             break
         default:
             messages.invalidUnitType(unitType)

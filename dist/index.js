@@ -37,7 +37,9 @@ const converter = (unitType, unitFrom, unitTo, value) => {
         case 'd':
         case 'distance':
             convertedValue = distanceConverter.convert(unitFrom, unitTo, value);
-            output(unitFrom, value, unitTo, convertedValue);
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue);
+            }
             break;
         default:
             messages.invalidUnitType(unitType);

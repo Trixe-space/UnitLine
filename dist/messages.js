@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.invalidCommand = exports.notEnoughArguments = exports.invalidUnitType = exports.invalidUnitTo = exports.help = void 0;
+exports.invalidCommand = exports.notEnoughArguments = exports.invalidUnitType = exports.invalidUnitFrom = exports.invalidUnitTo = exports.help = void 0;
 const help = () => {
     const message = `
 unitline <command>
@@ -43,6 +43,17 @@ To check additional units, run:
     console.log(message);
 };
 exports.invalidUnitTo = invalidUnitTo;
+const invalidUnitFrom = (unitFrom, unitList) => {
+    const message = `
+${unitFrom} is not a valid unit to convert from.
+
+List of valid units: ${unitList.toString()}
+
+To check additional units, run:
+    unitline ls
+    `;
+};
+exports.invalidUnitFrom = invalidUnitFrom;
 const invalidUnitType = (unitType) => {
     const message = `
 ${unitType} is not a valid type

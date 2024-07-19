@@ -40,6 +40,17 @@ To check additional units, run:
     console.log(message)
 }
 
+export const invalidUnitFrom = (unitFrom : string, unitList : string[]) => {
+    const message : string = `
+${unitFrom} is not a valid unit to convert from.
+
+List of valid units: ${unitList.toString()}
+
+To check additional units, run:
+    unitline ls
+    `
+}
+
 export const invalidUnitType = (unitType : string) : void => {
     const message : string = `
 ${unitType} is not a valid type

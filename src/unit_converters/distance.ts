@@ -1,4 +1,5 @@
 #!usr/bin/env node
+import * as messages from "../messages";
 
 interface Distance {
     [unit: string]: number;
@@ -16,7 +17,7 @@ let formulas : Distance = {
     'nm': 0.000000001
 }
 
-//TODO better error messages
+//TODO use the messages from messages.ts
 export const convert = (unitFrom : string, unitTo: string, value : number) => {
     if (!(unitFrom in formulas)) {
         console.log('Invalid unit to convert from')

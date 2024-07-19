@@ -13,7 +13,7 @@ let formulas = {
     'um': 0.000001,
     'nm': 0.000000001
 };
-//TODO better error messages
+//TODO use the messages from messages.ts
 const convert = (unitFrom, unitTo, value) => {
     if (!(unitFrom in formulas)) {
         console.log('Invalid unit to convert from');
