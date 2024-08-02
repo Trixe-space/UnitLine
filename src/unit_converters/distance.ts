@@ -17,7 +17,7 @@ let formulas : Distance = {
     'nm': 0.000000001
 }
 
-export const convert = (unitFrom : string, unitTo: string, value : number) => {
+export const convert = (unitFrom : string, unitTo: string, value : number) : number | undefined => {
     if (!(unitFrom in formulas)) {
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'distance')
     } else {

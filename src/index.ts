@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import * as distanceConverter from './unit_converters/distance'
+import * as massConverter from './unit_converters/mass'
 import * as messages from './messages'
 
 const input : string[] = process.argv
 
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
+const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
 
 const output = (unitFrom: string, value : number, unitTo: string, convertedValue : number) => {
     console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`)
@@ -16,6 +18,13 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
         case 'd':
         case 'distance':
             convertedValue = distanceConverter.convert(unitFrom, unitTo, value) as number
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue)
+            }
+            break
+        case 'm':
+        case 'mass':
+            convertedValue = massConverter.convert(unitFrom, unitTo, value) as number
             if (convertedValue != undefined) {
                 output(unitFrom, value, unitTo, convertedValue)
             }
@@ -42,9 +51,14 @@ if (input.length >= 3) {
                 case '--distance':
                     console.log(distanceUnits.toString())
                     break
+                case '-m':
+                case '--m':
+                    console.log(massUnits.toString())
+                    break
                 default:
                     console.log(`
 Distance: ${distanceUnits.toString()}
+Mass: ${massUnits.toString()}
                         `)
             }
             break

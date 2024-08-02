@@ -18,6 +18,7 @@ Commands:
 
         Supported unit types
             d, distance       For distance units
+            m, mass           For mass units
 
 
     ls, list                Shows a list of all supported units
@@ -27,6 +28,7 @@ Commands:
 
         Options:
             -d, --distance       Shows a list of all distance units
+            -m, --mass           Shows a list of all mass units
 `;
     console.log(message);
 };
@@ -61,6 +63,7 @@ ${unitType} is not a valid type
 
 List of available types:
     d, distance       Convert units of distance
+    m, mass           Convert units of mass
 `;
     console.log(message);
 };
@@ -75,6 +78,7 @@ Usage:
 
 Unit Types:
     d, distance       Convert units of distance
+    m, mass           Convert units of mass
 
 To view supported units, run:
     unitline ls
