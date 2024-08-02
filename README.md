@@ -3,9 +3,8 @@ UnitLine is an easy to use CLI based conversion tool. This tool makes it extreme
 
 ## Supported units:
 As of now, UnitLine supports conversion between the folowing units:
-
 <details>
-<summary>Distance Units</summary>
+<summary>1. Distance Units</summary>
 
 - Kilometer (km)
 - Hectometer (hm)
@@ -16,13 +15,29 @@ As of now, UnitLine supports conversion between the folowing units:
 - Millimeter (mm)
 - Micrometer (μm/um)
 - Nanometer (nm)
+</details>
 
-> [!NOTE]
-> Due to JavaScript not being able to handle large numbers, nanometers conversions might show up with "E notation" sometimes.
+<details>
+<summary>2. Mass Units</summary>
+
+- Short Tonne (t)
+- Kilogram (kg)
+- Hectogram (hg)
+- Decagram (dag)
+- Gram (g)
+- Carat (ct)
+- Decigram (dg)
+- Centigram (cg)
+- Milligram (mg)
+- Microgram (ug)
+- Nanogram (ng)
 </details>
 
 
-Outside of these units there are plans to add support for units of distance in the imperial system, units of mass, temperature, time, area, volume, bit & bytes.
+Outside of these units there are plans to add support for units of temperature, time, area, volume, bit & bytes.
+
+> [!NOTE]
+> Due to JavaScript not being able to handle large numbers, conversions of large numbers might show up with "E notation" sometimes.
 
 To list all supported units, run:
 ```
