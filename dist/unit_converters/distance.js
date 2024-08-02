@@ -39,7 +39,6 @@ let formulas = {
 };
 const convert = (unitFrom, unitTo, value) => {
     if (!(unitFrom in formulas)) {
-        // console.log('Invalid unit to convert from')
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'distance');
     }
     else {

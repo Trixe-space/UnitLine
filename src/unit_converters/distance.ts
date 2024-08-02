@@ -19,7 +19,6 @@ let formulas : Distance = {
 
 export const convert = (unitFrom : string, unitTo: string, value : number) => {
     if (!(unitFrom in formulas)) {
-        // console.log('Invalid unit to convert from')
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'distance')
     } else {
         if (!(unitTo in formulas)) {
