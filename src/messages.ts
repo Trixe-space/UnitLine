@@ -28,11 +28,11 @@ Commands:
     console.log(message)
 }
 
-export const invalidUnitTo = (unitTo : string, unitList : string[]) : void => {
+export const invalidUnitTo = (unitTo : string, unitList : string[], type : string) : void => {
     const message : string= `
 ${unitTo} is not a valid unit to convert to.
 
-List of valid units: ${unitList.toString()}
+List of valid ${type} units: ${unitList.toString()}
 
 To check additional units, run:
     unitline ls
@@ -40,15 +40,16 @@ To check additional units, run:
     console.log(message)
 }
 
-export const invalidUnitFrom = (unitFrom : string, unitList : string[]) => {
+export const invalidUnitFrom = (unitFrom : string, unitList : string[], type : string) => {
     const message : string = `
 ${unitFrom} is not a valid unit to convert from.
 
-List of valid units: ${unitList.toString()}
+List of valid ${type} units: ${unitList.toString()}
 
 To check additional units, run:
     unitline ls
     `
+    console.log(message)
 }
 
 export const invalidUnitType = (unitType : string) : void => {

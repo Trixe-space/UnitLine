@@ -4,7 +4,9 @@ UnitLine is an easy to use CLI based conversion tool. This tool makes it extreme
 ## Supported units:
 As of now, UnitLine supports conversion between the folowing units:
 
-**Distance:**
+<details>
+<summary>Distance Units</summary>
+
 - Kilometer (km)
 - Hectometer (hm)
 - Decameter (dam)
@@ -17,6 +19,8 @@ As of now, UnitLine supports conversion between the folowing units:
 
 > [!NOTE]
 > Due to JavaScript not being able to handle large numbers, nanometers conversions might show up with "E notation" sometimes.
+</details>
+
 
 Outside of these units there are plans to add support for units of distance in the imperial system, units of mass, temperature, time, area, volume, bit & bytes.
 

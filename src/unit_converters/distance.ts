@@ -17,13 +17,13 @@ let formulas : Distance = {
     'nm': 0.000000001
 }
 
-//TODO use the messages from messages.ts
 export const convert = (unitFrom : string, unitTo: string, value : number) => {
     if (!(unitFrom in formulas)) {
-        console.log('Invalid unit to convert from')
+        // console.log('Invalid unit to convert from')
+        messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'distance')
     } else {
         if (!(unitTo in formulas)) {
-            console.log('Invalid unit to convert to')
+            messages.invalidUnitTo(unitTo, Object.keys(formulas), 'distance')
         } else {
             return (value * formulas[unitFrom]) / formulas[unitTo]
         }

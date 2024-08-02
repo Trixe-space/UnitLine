@@ -31,11 +31,11 @@ Commands:
     console.log(message);
 };
 exports.help = help;
-const invalidUnitTo = (unitTo, unitList) => {
+const invalidUnitTo = (unitTo, unitList, type) => {
     const message = `
 ${unitTo} is not a valid unit to convert to.
 
-List of valid units: ${unitList.toString()}
+List of valid ${type} units: ${unitList.toString()}
 
 To check additional units, run:
     unitline ls
@@ -43,15 +43,16 @@ To check additional units, run:
     console.log(message);
 };
 exports.invalidUnitTo = invalidUnitTo;
-const invalidUnitFrom = (unitFrom, unitList) => {
+const invalidUnitFrom = (unitFrom, unitList, type) => {
     const message = `
 ${unitFrom} is not a valid unit to convert from.
 
-List of valid units: ${unitList.toString()}
+List of valid ${type} units: ${unitList.toString()}
 
 To check additional units, run:
     unitline ls
     `;
+    console.log(message);
 };
 exports.invalidUnitFrom = invalidUnitFrom;
 const invalidUnitType = (unitType) => {
