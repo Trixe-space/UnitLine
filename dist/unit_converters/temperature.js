@@ -31,6 +31,9 @@ const convert = (unitFrom, unitTo, value) => {
         'C': value,
         'F': (value - 32) * 5 / 9,
         'K': value - 273.15,
+        'R': value * 5 / 9 - 273.15,
+        'Re': value * 1.25,
+        'De': 100 - value * 2 / 3
     };
     if (!(unitFrom in formulasFrom)) {
         messages.invalidUnitFrom(unitFrom, Object.keys(formulasFrom), 'temperature');
@@ -40,7 +43,10 @@ const convert = (unitFrom, unitTo, value) => {
         const formulasTo = {
             'C': value,
             'F': value * (9 / 5) + 32,
-            'K': value + 273.15
+            'K': value + 273.15,
+            'R': (value + 273.15) * 9 / 5,
+            'Re': value * 0.8,
+            'De': (100 - value) * 3 / 2
         };
         if (!(unitTo in formulasTo)) {
             messages.invalidUnitTo(unitTo, Object.keys(formulasTo), 'temperature');

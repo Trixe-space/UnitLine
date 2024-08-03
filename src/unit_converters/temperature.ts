@@ -10,6 +10,9 @@ export const convert = (unitFrom : string, unitTo: string, value : number) : num
         'C': value,
         'F': (value - 32) *  5 / 9,
         'K': value - 273.15,
+        'R': value * 5 / 9 - 273.15,
+        'Re': value * 1.25,
+        'De': 100 - value * 2 / 3
     }
 
     if (!(unitFrom in formulasFrom)) {
@@ -20,7 +23,10 @@ export const convert = (unitFrom : string, unitTo: string, value : number) : num
         const formulasTo : Temperature = {
             'C': value,
             'F': value * (9/5) + 32,
-            'K': value + 273.15
+            'K': value + 273.15,
+            'R': (value + 273.15) * 9 / 5,
+            'Re': value * 0.8,
+            'De': (100 - value) * 3 / 2
         }
     
         if (!(unitTo in formulasTo)) {

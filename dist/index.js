@@ -31,9 +31,9 @@ const messages = __importStar(require("./messages"));
 const input = process.argv;
 const distanceUnits = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
 const massUnits = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng'];
-const temperatureUnits = ['C', 'F', 'K'];
+const temperatureUnits = ['C', 'F', 'K', 'R', 'Re', 'De'];
 const output = (unitFrom, value, unitTo, convertedValue) => {
-    console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`);
+    console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`);
 };
 const converter = (unitType, unitFrom, unitTo, value) => {
     let convertedValue;

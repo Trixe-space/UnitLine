@@ -8,10 +8,10 @@ const input : string[] = process.argv
 
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
 const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
-const temperatureUnits : string[] = ['C', 'F', 'K']
+const temperatureUnits : string[] = ['C', 'F', 'K', 'R', 'Re', 'De']
 
 const output = (unitFrom: string, value : number, unitTo: string, convertedValue : number) => {
-    console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`)
+    console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`)
 }
 
 const converter = (unitType : string, unitFrom : string, unitTo : string, value : number) : void => {
