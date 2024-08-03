@@ -16,6 +16,7 @@ Commands:
         Supported unit types
             d, distance       For distance units
             m, mass           For mass units
+            t, temperature    For temperature units
 
 
     ls, list                Shows a list of all supported units
@@ -26,6 +27,7 @@ Commands:
         Options:
             -d, --distance       Shows a list of all distance units
             -m, --mass           Shows a list of all mass units
+            -t, --temperature    Shows a list of all temperature units
 `
     console.log(message)
 }
@@ -61,6 +63,7 @@ ${unitType} is not a valid type
 List of available types:
     d, distance       Convert units of distance
     m, mass           Convert units of mass
+    t, temperature    Convert units of temperature
 `
     console.log(message)
 }
@@ -76,6 +79,7 @@ Usage:
 Unit Types:
     d, distance       Convert units of distance
     m, mass           Convert units of mass
+    t, temperature    Convert units of temperature
 
 To view supported units, run:
     unitline ls

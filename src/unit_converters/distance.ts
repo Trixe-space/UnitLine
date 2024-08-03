@@ -5,7 +5,7 @@ interface Distance {
     [unit: string]: number;
 }
 
-let formulas : Distance = {
+const formulas : Distance = {
     'km': 1000,
     'hm': 100,
     'dam': 10,

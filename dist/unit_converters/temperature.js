@@ -26,29 +26,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.convert = void 0;
 const messages = __importStar(require("../messages"));
-const formulas = {
-    't': 1000000,
-    'kg': 1000,
-    'hg': 100,
-    'dag': 10,
-    'g': 1,
-    'ct': 0.2,
-    'dg': 0.1,
-    'cg': 0.01,
-    'mg': 0.001,
-    'ug': 0.000001,
-    'ng': 0.000000001
-};
 const convert = (unitFrom, unitTo, value) => {
-    if (!(unitFrom in formulas)) {
-        messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'mass');
+    const formulasFrom = {
+        'C': value,
+        'F': (value - 32) * 5 / 9,
+        'K': value - 273.15,
+    };
+    if (!(unitFrom in formulasFrom)) {
+        messages.invalidUnitFrom(unitFrom, Object.keys(formulasFrom), 'temperature');
     }
     else {
-        if (!(unitTo in formulas)) {
-            messages.invalidUnitTo(unitTo, Object.keys(formulas), 'mass');
+        value = formulasFrom[unitFrom];
+        const formulasTo = {
+            'C': value,
+            'F': value * (9 / 5) + 32,
+            'K': value + 273.15
+        };
+        if (!(unitTo in formulasTo)) {
+            messages.invalidUnitTo(unitTo, Object.keys(formulasTo), 'temperature');
         }
         else {
-            return (value * formulas[unitFrom]) / formulas[unitTo];
+            return formulasTo[unitTo];
         }
     }
 };

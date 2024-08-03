@@ -26,10 +26,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const distanceConverter = __importStar(require("./unit_converters/distance"));
 const massConverter = __importStar(require("./unit_converters/mass"));
+const temperatureConverter = __importStar(require("./unit_converters/temperature"));
 const messages = __importStar(require("./messages"));
 const input = process.argv;
 const distanceUnits = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
 const massUnits = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng'];
+const temperatureUnits = ['C', 'F', 'K'];
 const output = (unitFrom, value, unitTo, convertedValue) => {
     console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`);
 };
@@ -46,6 +48,13 @@ const converter = (unitType, unitFrom, unitTo, value) => {
         case 'm':
         case 'mass':
             convertedValue = massConverter.convert(unitFrom, unitTo, value);
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue);
+            }
+            break;
+        case 't':
+        case 'temperature':
+            convertedValue = temperatureConverter.convert(unitFrom, unitTo, value);
             if (convertedValue != undefined) {
                 output(unitFrom, value, unitTo, convertedValue);
             }
@@ -74,10 +83,15 @@ if (input.length >= 3) {
                 case '--m':
                     console.log(massUnits.toString());
                     break;
+                case '-t':
+                case '--teamperature':
+                    console.log(temperatureUnits.toString());
+                    break;
                 default:
                     console.log(`
 Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
+Temperature: ${temperatureUnits.toString()}
                         `);
             }
             break;

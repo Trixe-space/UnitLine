@@ -26,7 +26,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.convert = void 0;
 const messages = __importStar(require("../messages"));
-let formulas = {
+const formulas = {
     'km': 1000,
     'hm': 100,
     'dam': 10,

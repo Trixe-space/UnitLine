@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import * as distanceConverter from './unit_converters/distance'
 import * as massConverter from './unit_converters/mass'
+import * as temperatureConverter from './unit_converters/temperature';
 import * as messages from './messages'
 
 const input : string[] = process.argv
 
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
 const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
+const temperatureUnits : string[] = ['C', 'F', 'K']
 
 const output = (unitFrom: string, value : number, unitTo: string, convertedValue : number) => {
     console.log(`${value + unitFrom} -> ${convertedValue + unitTo}`)
@@ -25,6 +27,13 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
         case 'm':
         case 'mass':
             convertedValue = massConverter.convert(unitFrom, unitTo, value) as number
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue)
+            }
+            break
+        case 't':
+        case 'temperature':
+            convertedValue = temperatureConverter.convert(unitFrom, unitTo, value) as number
             if (convertedValue != undefined) {
                 output(unitFrom, value, unitTo, convertedValue)
             }
@@ -55,10 +64,15 @@ if (input.length >= 3) {
                 case '--m':
                     console.log(massUnits.toString())
                     break
+                case '-t':
+                case '--teamperature':
+                    console.log(temperatureUnits.toString())
+                    break
                 default:
                     console.log(`
 Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
+Temperature: ${temperatureUnits.toString()}
                         `)
             }
             break

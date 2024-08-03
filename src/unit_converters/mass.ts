@@ -5,7 +5,7 @@ interface Mass {
     [unit: string]: number;
 }
 
-let formulas : Mass = {
+const formulas : Mass = {
     't': 1000000,
     'kg': 1000,
     'hg': 100,
