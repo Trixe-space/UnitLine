@@ -33,11 +33,19 @@ As of now, UnitLine supports conversion between the folowing units:
 - Nanogram (ng)
 </details>
 
+<details>
+<summary>3. Temperature Units</summary>
 
-Outside of these units there are plans to add support for units of temperature, time, area, volume, bit & bytes.
+- Celcius (C)
+- Farenheit (F)
+- Kelvin (K)
+</details>
+
+
+Outside of these units there are plans to add support for units of time, area, volume, bit & bytes.
 
 > [!NOTE]
-> Due to JavaScript not being able to handle large numbers, conversions of large numbers might show up with "E notation" sometimes.
+> Due to JavaScript not being able to handle large numbers, conversions of large numbers sometimes might show up with "E notation".
 
 To list all supported units, run:
 ```
