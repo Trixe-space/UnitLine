@@ -22,11 +22,9 @@ const formulas : Mass = {
 export const convert = (unitFrom : string, unitTo: string, value : number) : number | undefined => {
     if (!(unitFrom in formulas)) {
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'mass')
+    } else if (!(unitTo in formulas)) {
+        messages.invalidUnitTo(unitTo, Object.keys(formulas), 'mass')
     } else {
-        if (!(unitTo in formulas)) {
-            messages.invalidUnitTo(unitTo, Object.keys(formulas), 'mass')
-        } else {
-            return (value * formulas[unitFrom]) / formulas[unitTo]
-        }
+        return (value * formulas[unitFrom]) / formulas[unitTo]
     }
 }

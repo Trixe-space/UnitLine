@@ -32,7 +32,8 @@ Commands:
             -m, --mass           Shows a list of all mass units
             -t, --temperature    Shows a list of all temperature units
 `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.help = help;
 const invalidUnitTo = (unitTo, unitList, type) => {
@@ -44,7 +45,8 @@ List of valid ${type} units: ${unitList.toString()}
 To check additional units, run:
     unitline ls
 `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.invalidUnitTo = invalidUnitTo;
 const invalidUnitFrom = (unitFrom, unitList, type) => {
@@ -56,7 +58,8 @@ List of valid ${type} units: ${unitList.toString()}
 To check additional units, run:
     unitline ls
     `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.invalidUnitFrom = invalidUnitFrom;
 const invalidUnitType = (unitType) => {
@@ -68,7 +71,8 @@ List of available types:
     m, mass           Convert units of mass
     t, temperature    Convert units of temperature
 `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.invalidUnitType = invalidUnitType;
 const notEnoughArguments = () => {
@@ -87,7 +91,8 @@ Unit Types:
 To view supported units, run:
     unitline ls
 `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.notEnoughArguments = notEnoughArguments;
 const invalidCommand = (command) => {
@@ -97,6 +102,7 @@ ${command} is not a valid UnitLine command.
 To see a list of all valid commands, please run the following command:
     unitline help    
 `;
-    console.log(message);
+    console.error(message);
+    process.exit(1);
 };
 exports.invalidCommand = invalidCommand;

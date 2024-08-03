@@ -80,15 +80,15 @@ Temperature: ${temperatureUnits.toString()}
         case 'convert':
             if (input.length <= 5) {
                 messages.notEnoughArguments()
-            break
             }
+
             let unitType : string = input[3]
             let unitFrom : string = input[4].split('-')[0]
             let unitTo : string = input[4].split('-')[1]
             let value : number = parseFloat(input[5])
 
             if (isNaN(value)) {
-                console.log(`The value provided is not a number`)
+                console.error(`The value provided is not a number`)
                 break
             }
 

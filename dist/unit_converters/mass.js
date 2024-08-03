@@ -43,13 +43,11 @@ const convert = (unitFrom, unitTo, value) => {
     if (!(unitFrom in formulas)) {
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'mass');
     }
+    else if (!(unitTo in formulas)) {
+        messages.invalidUnitTo(unitTo, Object.keys(formulas), 'mass');
+    }
     else {
-        if (!(unitTo in formulas)) {
-            messages.invalidUnitTo(unitTo, Object.keys(formulas), 'mass');
-        }
-        else {
-            return (value * formulas[unitFrom]) / formulas[unitTo];
-        }
+        return (value * formulas[unitFrom]) / formulas[unitTo];
     }
 };
 exports.convert = convert;

@@ -41,13 +41,11 @@ const convert = (unitFrom, unitTo, value) => {
     if (!(unitFrom in formulas)) {
         messages.invalidUnitFrom(unitFrom, Object.keys(formulas), 'distance');
     }
+    else if (!(unitTo in formulas)) {
+        messages.invalidUnitTo(unitTo, Object.keys(formulas), 'distance');
+    }
     else {
-        if (!(unitTo in formulas)) {
-            messages.invalidUnitTo(unitTo, Object.keys(formulas), 'distance');
-        }
-        else {
-            return (value * formulas[unitFrom]) / formulas[unitTo];
-        }
+        return (value * formulas[unitFrom]) / formulas[unitTo];
     }
 };
 exports.convert = convert;

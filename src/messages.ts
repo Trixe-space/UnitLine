@@ -29,7 +29,8 @@ Commands:
             -m, --mass           Shows a list of all mass units
             -t, --temperature    Shows a list of all temperature units
 `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
 
 export const invalidUnitTo = (unitTo : string, unitList : string[], type : string) : void => {
@@ -41,10 +42,11 @@ List of valid ${type} units: ${unitList.toString()}
 To check additional units, run:
     unitline ls
 `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
 
-export const invalidUnitFrom = (unitFrom : string, unitList : string[], type : string) => {
+export const invalidUnitFrom = (unitFrom : string, unitList : string[], type : string) : void => {
     const message : string = `
 ${unitFrom} is not a valid unit to convert from.
 
@@ -53,7 +55,8 @@ List of valid ${type} units: ${unitList.toString()}
 To check additional units, run:
     unitline ls
     `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
 
 export const invalidUnitType = (unitType : string) : void => {
@@ -65,7 +68,8 @@ List of available types:
     m, mass           Convert units of mass
     t, temperature    Convert units of temperature
 `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
 
 export const notEnoughArguments = () : void => {
@@ -84,7 +88,8 @@ Unit Types:
 To view supported units, run:
     unitline ls
 `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
 
 export const invalidCommand = (command : string) : void => {
@@ -94,5 +99,6 @@ ${command} is not a valid UnitLine command.
 To see a list of all valid commands, please run the following command:
     unitline help    
 `
-    console.log(message)
+    console.error(message)
+    process.exit(1)
 }
