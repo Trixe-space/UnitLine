@@ -39,6 +39,9 @@ As of now, UnitLine supports conversion between the folowing units:
 - Celcius (C)
 - Farenheit (F)
 - Kelvin (K)
+- Rankine (R)
+- Réaumur (Re)
+- Delisle (De)
 </details>
 
 
