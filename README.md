@@ -1,5 +1,5 @@
 # UnitLine
-UnitLine is an easy to use CLI based conversion tool. This tool makes it extremely easy to convert from one unit to another.
+UnitLine is an easy to use CLI based conversion tool. This tool makes it extremely easy to convert from one unit to another inside your terminal.
 
 ## Supported units:
 As of now, UnitLine supports conversion between the folowing units:
@@ -44,8 +44,25 @@ As of now, UnitLine supports conversion between the folowing units:
 - Delisle (De)
 </details>
 
+<details>
+<summary>4. Time units</summary>
 
-Outside of these units there are plans to add support for units of time, area, volume, bit & bytes.
+- Century (c)
+- Decade (dec)
+- Year (y)
+- Month (mo)
+- Week (w)
+- Day (d)
+- Hour (h)
+- Minute (m)
+- Second (s)
+
+> [!NOTE]
+> 1. The length of a month has been standardized to be equal to 30 days.
+> 2. The length of a year has been standardized to be equal to 365 days.
+</details>
+
+Outside of these units there are plans to add support for units of volume, bit & bytes and color.
 
 > [!NOTE]
 > Due to JavaScript not being able to handle large numbers, conversions of large numbers sometimes might show up with "E notation".
