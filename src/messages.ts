@@ -14,9 +14,10 @@ Commands:
             unitline conv d m-km 1560.23
 
         Supported unit types
-            d, distance       For distance units
-            m, mass           For mass units
-            t, temperature    For temperature units
+            d, distance             For distance units
+            m, mass                 For mass units
+            temp, temperature       For temperature units
+            t, time                 For time units
 
 
     ls, list                Shows a list of all supported units
@@ -25,12 +26,13 @@ Commands:
             unitline ls -distance
 
         Options:
-            -d, --distance       Shows a list of all distance units
-            -m, --mass           Shows a list of all mass units
-            -t, --temperature    Shows a list of all temperature units
+            -d, --distance              Shows a list of all distance units
+            -m, --mass                  Shows a list of all mass units
+            -temp, --temperature        Shows a list of all temperature units
+            -t, --time                  Shows a list of all time units
 `
     console.error(message)
-    process.exit(1)
+    process.exit(0)
 }
 
 export const invalidUnitTo = (unitTo : string, unitList : string[], type : string) : void => {
@@ -64,9 +66,10 @@ export const invalidUnitType = (unitType : string) : void => {
 ${unitType} is not a valid type
 
 List of available types:
-    d, distance       Convert units of distance
-    m, mass           Convert units of mass
-    t, temperature    Convert units of temperature
+    d, distance             Convert units of distance
+    m, mass                 Convert units of mass
+    temp, temperature       Convert units of temperature
+    t, time                 Convert units of time
 `
     console.error(message)
     process.exit(1)
@@ -81,9 +84,10 @@ Usage:
     unitline conv d m-km 1560.23
 
 Unit Types:
-    d, distance       Convert units of distance
-    m, mass           Convert units of mass
-    t, temperature    Convert units of temperature
+    d, distance         Convert units of distance
+    m, mass             Convert units of mass
+    t, temperature      Convert units of temperature
+    t, time             Convert units of time
 
 To view supported units, run:
     unitline ls

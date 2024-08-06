@@ -27,11 +27,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const distanceConverter = __importStar(require("./unit_converters/distance"));
 const massConverter = __importStar(require("./unit_converters/mass"));
 const temperatureConverter = __importStar(require("./unit_converters/temperature"));
+const timeConverter = __importStar(require("./unit_converters/time"));
 const messages = __importStar(require("./messages"));
 const input = process.argv;
 const distanceUnits = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
 const massUnits = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng'];
 const temperatureUnits = ['C', 'F', 'K', 'R', 'Re', 'De'];
+const timeUnits = ['c', 'dec', 'y', 'mo', 'w', 'd', 'h', 'm', 's'];
 const output = (unitFrom, value, unitTo, convertedValue) => {
     console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`);
 };
@@ -52,9 +54,16 @@ const converter = (unitType, unitFrom, unitTo, value) => {
                 output(unitFrom, value, unitTo, convertedValue);
             }
             break;
-        case 't':
+        case 'temp':
         case 'temperature':
             convertedValue = temperatureConverter.convert(unitFrom, unitTo, value);
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue);
+            }
+            break;
+        case 't':
+        case 'time':
+            convertedValue = timeConverter.convert(unitFrom, unitTo, value);
             if (convertedValue != undefined) {
                 output(unitFrom, value, unitTo, convertedValue);
             }
@@ -83,15 +92,20 @@ if (input.length >= 3) {
                 case '--m':
                     console.log(massUnits.toString());
                     break;
-                case '-t':
-                case '--teamperature':
+                case '-temp':
+                case '--temperature':
                     console.log(temperatureUnits.toString());
+                    break;
+                case '-t':
+                case '-time':
+                    console.log(timeUnits.toString());
                     break;
                 default:
                     console.log(`
 Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
 Temperature: ${temperatureUnits.toString()}
+Time: ${timeUnits.toString()}
                         `);
             }
             break;

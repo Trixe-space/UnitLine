@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import * as distanceConverter from './unit_converters/distance'
 import * as massConverter from './unit_converters/mass'
-import * as temperatureConverter from './unit_converters/temperature';
+import * as temperatureConverter from './unit_converters/temperature'
+import * as timeConverter from './unit_converters/time'
+
 import * as messages from './messages'
 
 const input : string[] = process.argv
@@ -9,6 +11,7 @@ const input : string[] = process.argv
 const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
 const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
 const temperatureUnits : string[] = ['C', 'F', 'K', 'R', 'Re', 'De']
+const timeUnits : string[] = ['c', 'dec', 'y', 'mo', 'w', 'd', 'h', 'm', 's']
 
 const output = (unitFrom: string, value : number, unitTo: string, convertedValue : number) => {
     console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`)
@@ -31,9 +34,16 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
                 output(unitFrom, value, unitTo, convertedValue)
             }
             break
-        case 't':
+        case 'temp':
         case 'temperature':
             convertedValue = temperatureConverter.convert(unitFrom, unitTo, value) as number
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue)
+            }
+            break
+        case 't':
+        case 'time':
+            convertedValue = timeConverter.convert(unitFrom, unitTo, value) as number
             if (convertedValue != undefined) {
                 output(unitFrom, value, unitTo, convertedValue)
             }
@@ -64,15 +74,20 @@ if (input.length >= 3) {
                 case '--m':
                     console.log(massUnits.toString())
                     break
-                case '-t':
-                case '--teamperature':
+                case '-temp':
+                case '--temperature':
                     console.log(temperatureUnits.toString())
+                    break
+                case '-t':
+                case '-time':
+                    console.log(timeUnits.toString())
                     break
                 default:
                     console.log(`
 Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
 Temperature: ${temperatureUnits.toString()}
+Time: ${timeUnits.toString()}
                         `)
             }
             break
