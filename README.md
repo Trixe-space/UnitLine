@@ -56,6 +56,9 @@ As of now, UnitLine supports conversion between the folowing units:
 - Hour (h)
 - Minute (m)
 - Second (s)
+- Millisecond (ms)
+- Microsecond (us)
+- Nanosecond (ns)
 
 > [!NOTE]
 > 1. The length of a month has been standardized to be equal to 30 days.
