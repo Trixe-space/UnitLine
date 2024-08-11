@@ -6,15 +6,18 @@ interface Time {
 }
 
 const formulas : Time = {
-    'c': 52560000,
-    'dec': 5256000,
-    'y': 525600,
-    'mo': 43200,
-    'w': 10080,
-    'd': 1440,
-    'h': 60,
-    'm': 1,
-    's': 0.0166666667,
+    'c': 3153600000,
+    'dec': 315360000,
+    'y': 31536000,
+    'mo': 2592000,
+    'w': 604800,
+    'd': 86400,
+    'h': 3600,
+    'm': 60,
+    's': 1,
+    'ms': 0.001,
+    'us': 0.000001,
+    'ns': 0.000000001
 }
 
 export const convert = (unitFrom : string, unitTo: string, value : number) : number | undefined => {
