@@ -27,6 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.convert = void 0;
 const messages = __importStar(require("../messages"));
 const formulas = {
+    'mi': 31536000000,
     'c': 3153600000,
     'dec': 315360000,
     'y': 31536000,

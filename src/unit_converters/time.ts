@@ -6,6 +6,7 @@ interface Time {
 }
 
 const formulas : Time = {
+    'mi': 31536000000,
     'c': 3153600000,
     'dec': 315360000,
     'y': 31536000,

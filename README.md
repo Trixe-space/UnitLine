@@ -47,6 +47,7 @@ As of now, UnitLine supports conversion between the folowing units:
 <details>
 <summary>4. Time units</summary>
 
+- Millennium (mi)
 - Century (c)
 - Decade (dec)
 - Year (y)
