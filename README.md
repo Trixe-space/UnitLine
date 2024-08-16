@@ -79,6 +79,7 @@ As of now, UnitLine supports conversion between the folowing units:
 - Hectopascal (hPa)
 - Pascal (Pa)
 - Barye (Ba)
+</details>
 
 Outside of these units there are plans to add conversions for color.
 
