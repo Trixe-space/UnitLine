@@ -66,7 +66,7 @@ As of now, UnitLine supports conversion between the folowing units:
 > 2. The length of a year has been standardized to be equal to 365 days.
 </details>
 
-Outside of these units there are plans to add support for units of volume, bit & bytes and color.
+Outside of these units there are plans to add conversions for pressure and color.
 
 > [!NOTE]
 > Due to JavaScript not being able to handle large numbers, conversions of large numbers sometimes might show up with "E notation".
