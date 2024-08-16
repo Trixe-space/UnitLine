@@ -66,7 +66,21 @@ As of now, UnitLine supports conversion between the folowing units:
 > 2. The length of a year has been standardized to be equal to 365 days.
 </details>
 
-Outside of these units there are plans to add conversions for pressure and color.
+<details>
+<summary>5. Pressure units</summary>
+
+- Standard Atmosphere (atm)
+- Torr (Torr)
+- Pounds per Square Inch (psi)
+- Bar (bar)
+- Decibar (dbar)
+- Millibar (mbar)
+- Kilopascal (kPa)
+- Hectopascal (hPa)
+- Pascal (Pa)
+- Barye (Ba)
+
+Outside of these units there are plans to add conversions for color.
 
 > [!NOTE]
 > Due to JavaScript not being able to handle large numbers, conversions of large numbers sometimes might show up with "E notation".

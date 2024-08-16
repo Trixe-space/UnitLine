@@ -18,6 +18,7 @@ Commands:
             m, mass                 For mass units
             temp, temperature       For temperature units
             t, time                 For time units
+            p, pressure             For pressure units
 
 
     ls, list                Shows a list of all supported units
@@ -30,6 +31,7 @@ Commands:
             -m, --mass                  Shows a list of all mass units
             -temp, --temperature        Shows a list of all temperature units
             -t, --time                  Shows a list of all time units
+            -p, --pressure              Shows a list of all pressure units
 `
     console.error(message)
     process.exit(0)
@@ -70,6 +72,7 @@ List of available types:
     m, mass                 Convert units of mass
     temp, temperature       Convert units of temperature
     t, time                 Convert units of time
+    p, pressure             Convert units of pressure
 `
     console.error(message)
     process.exit(1)
@@ -88,6 +91,7 @@ Unit Types:
     m, mass             Convert units of mass
     t, temperature      Convert units of temperature
     t, time             Convert units of time
+    p, pressure         Convert units of pressure
 
 To view supported units, run:
     unitline ls

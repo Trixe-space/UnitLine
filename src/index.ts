@@ -3,6 +3,7 @@ import * as distanceConverter from './unit_converters/distance'
 import * as massConverter from './unit_converters/mass'
 import * as temperatureConverter from './unit_converters/temperature'
 import * as timeConverter from './unit_converters/time'
+import * as pressureConverter from './unit_converters/pressure'
 
 import * as messages from './messages'
 
@@ -12,6 +13,7 @@ const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um'
 const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
 const temperatureUnits : string[] = ['C', 'F', 'K', 'R', 'Re', 'De']
 const timeUnits : string[] = ['mi', 'c', 'dec', 'y', 'mo', 'w', 'd', 'h', 'm', 's', 'ms', 'us', 'ns']
+const pressureUnits : string[] = ['atm', 'Torr', 'psi', 'bar', 'dbar', 'mbar', 'kPa', 'hPa', 'Pa', 'Ba']
 
 const output = (unitFrom: string, value : number, unitTo: string, convertedValue : number) => {
     console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`)
@@ -48,6 +50,13 @@ const converter = (unitType : string, unitFrom : string, unitTo : string, value 
                 output(unitFrom, value, unitTo, convertedValue)
             }
             break
+        case 'pressure':
+        case 'p':
+            convertedValue = pressureConverter.convert(unitFrom, unitTo, value) as number
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue)
+            }
+            break
         default:
             messages.invalidUnitType(unitType)
     }
@@ -79,8 +88,12 @@ if (input.length >= 3) {
                     console.log(temperatureUnits.toString())
                     break
                 case '-t':
-                case '-time':
+                case '--time':
                     console.log(timeUnits.toString())
+                    break
+                case '-p':
+                case '--pressure':
+                    console.log(pressureUnits.toString())
                     break
                 default:
                     console.log(`
@@ -88,6 +101,7 @@ Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
 Temperature: ${temperatureUnits.toString()}
 Time: ${timeUnits.toString()}
+Pressure: ${pressureUnits.toString()}
                         `)
             }
             break

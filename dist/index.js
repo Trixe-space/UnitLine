@@ -28,12 +28,14 @@ const distanceConverter = __importStar(require("./unit_converters/distance"));
 const massConverter = __importStar(require("./unit_converters/mass"));
 const temperatureConverter = __importStar(require("./unit_converters/temperature"));
 const timeConverter = __importStar(require("./unit_converters/time"));
+const pressureConverter = __importStar(require("./unit_converters/pressure"));
 const messages = __importStar(require("./messages"));
 const input = process.argv;
 const distanceUnits = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm'];
 const massUnits = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng'];
 const temperatureUnits = ['C', 'F', 'K', 'R', 'Re', 'De'];
 const timeUnits = ['mi', 'c', 'dec', 'y', 'mo', 'w', 'd', 'h', 'm', 's', 'ms', 'us', 'ns'];
+const pressureUnits = ['atm', 'Torr', 'psi', 'bar', 'dbar', 'mbar', 'kPa', 'hPa', 'Pa', 'Ba'];
 const output = (unitFrom, value, unitTo, convertedValue) => {
     console.log(`${value} ${unitFrom} -> ${convertedValue} ${unitTo}`);
 };
@@ -68,6 +70,13 @@ const converter = (unitType, unitFrom, unitTo, value) => {
                 output(unitFrom, value, unitTo, convertedValue);
             }
             break;
+        case 'pressure':
+        case 'p':
+            convertedValue = pressureConverter.convert(unitFrom, unitTo, value);
+            if (convertedValue != undefined) {
+                output(unitFrom, value, unitTo, convertedValue);
+            }
+            break;
         default:
             messages.invalidUnitType(unitType);
     }
@@ -97,8 +106,12 @@ if (input.length >= 3) {
                     console.log(temperatureUnits.toString());
                     break;
                 case '-t':
-                case '-time':
+                case '--time':
                     console.log(timeUnits.toString());
+                    break;
+                case '-p':
+                case '--pressure':
+                    console.log(pressureUnits.toString());
                     break;
                 default:
                     console.log(`
@@ -106,6 +119,7 @@ Distance: ${distanceUnits.toString()}
 Mass: ${massUnits.toString()}
 Temperature: ${temperatureUnits.toString()}
 Time: ${timeUnits.toString()}
+Pressure: ${pressureUnits.toString()}
                         `);
             }
             break;
