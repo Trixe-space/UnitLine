@@ -35,7 +35,12 @@ const formulas = {
     'cm': 0.01,
     'mm': 0.001,
     'um': 0.000001,
-    'nm': 0.000000001
+    'nm': 0.000000001,
+    'nmi': 1852,
+    'mi': 1609.34,
+    'yd': 0.9144,
+    'ft': 0.3048,
+    'in': 0.0254,
 };
 const convert = (unitFrom, unitTo, value) => {
     if (!(unitFrom in formulas)) {

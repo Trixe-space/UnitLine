@@ -9,7 +9,7 @@ import * as messages from './messages'
 
 const input : string[] = process.argv
 
-const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm']
+const distanceUnits : string[] = ['km', 'hm', 'dam', 'm', 'dm', 'cm', 'mm', 'um', 'nm', 'nmi', 'mi', 'yd', 'ft', 'in']
 const massUnits : string[] = ['t', 'kg', 'hg', 'dag', 'g', 'ct', 'dg', 'cg', 'mg', 'ug', 'ng']
 const temperatureUnits : string[] = ['C', 'F', 'K', 'R', 'Re', 'De']
 const timeUnits : string[] = ['mi', 'c', 'dec', 'y', 'mo', 'w', 'd', 'h', 'm', 's', 'ms', 'us', 'ns']
