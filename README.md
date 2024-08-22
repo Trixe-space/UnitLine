@@ -15,6 +15,11 @@ As of now, UnitLine supports conversion between the folowing units:
 - Millimeter (mm)
 - Micrometer (μm/um)
 - Nanometer (nm)
+- Nautical Mile (nmi)
+- Mile (mi)
+- Yard (yd)
+- Foot (ft)
+- Inch (in)
 </details>
 
 <details>
